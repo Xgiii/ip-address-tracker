@@ -1,6 +1,6 @@
 import { LatLngExpression } from 'leaflet';
-import React from 'react';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import React, { use, useEffect } from 'react';
+import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
@@ -10,8 +10,22 @@ const markerIcon = new L.Icon({
   iconSize: [35, 45],
 });
 
-function Map() {
-  const position: LatLngExpression = [51.505, -0.09];
+function Map({ position }: { position: LatLngExpression }) {
+  function FlyMapTo({
+    center,
+    zoom,
+  }: {
+    center: LatLngExpression;
+    zoom: number;
+  }) {
+    const map = useMap();
+
+    useEffect(() => {
+      map.flyTo(center, zoom);
+    }, [position]);
+    return null;
+  }
+
   return (
     <>
       <MapContainer
@@ -25,6 +39,7 @@ function Map() {
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
         <Marker icon={markerIcon} position={position} />
+        <FlyMapTo center={position} zoom={13} />
       </MapContainer>
     </>
   );
