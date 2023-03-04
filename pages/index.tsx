@@ -22,8 +22,6 @@ const Home: NextPage = () => {
     34.04915, -118.09462,
   ]);
 
-  console.log(position);
-
   async function submitIpHandler(ip: string) {
     const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
     if (!ip || !ipRegex.test(ip)) {
