@@ -31,7 +31,7 @@ function Map({ position }: { position: LatLngExpression }) {
       <MapContainer
         center={position}
         zoom={13}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         className='w-full h-[65vh]'
       >
         <TileLayer

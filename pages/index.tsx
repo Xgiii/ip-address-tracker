@@ -15,10 +15,14 @@ const Map = dynamic(() => import('../components/Map'), {
 const Home: NextPage = () => {
   const [ipError, setIpError] = useState('');
   const [ip, setIp] = useState('192.212.174.101');
-  const [location, setLocation] = useState('Brooklyn, NY 10001');
-  const [timezone, setTimezone] = useState('-05:00');
-  const [isp, setIsp] = useState('SpaceX Starlink');
-  const [position, setPosition] = useState<LatLngExpression>([51.505, -0.09]);
+  const [location, setLocation] = useState('South San Gabriel, California');
+  const [timezone, setTimezone] = useState('-08:00');
+  const [isp, setIsp] = useState('Southern California Edison');
+  const [position, setPosition] = useState<LatLngExpression>([
+    34.04915, -118.09462,
+  ]);
+
+  console.log(position);
 
   async function submitIpHandler(ip: string) {
     const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
